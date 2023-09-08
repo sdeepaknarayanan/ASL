@@ -49,12 +49,3 @@ This above will build and test the output of the default target of the make file
 ```bash
 python3 test.py [build-target-name]
 ```
-
-## Profile Guided Optimization:
-The test profile guided optimization, first ensure that you are on the branch `pgo` and have the run the test case generation file. Then you just need to run `make pgo_gen`. This generates the executable `polyvol_pgo` which can then be used as follows:
-```bash
-./polyvol_pgo [input-file-name]
-```
-
-## All code in single file:
-To test how the default build target performs when all code is present in a single file instead of being split over several files, you need to be in the branch `pgo` or `onefile`. Then you just need to run `make onefile`. This creates the `polyvol` executable which can then be used as described previously. 
