@@ -5,18 +5,6 @@
 - Vraj Patel
 - Raghu Raman Ravi
 
-## Project Repository Structure:
-Here we highlight where the code corresponding to the various stages in the optimizations refered to in our report can be found:
-- **Baseline**: Refer to git branch `baseline`
-- **Optimization-I**: Refer to git branch `bound-remove`
-- **Optimization-II**: Refer to git branch `fast-linalg`
-- **Optimization-III**: Refer to git branch `vecplusextraoptim`
-- **Optimization-IV**: Refer to git branch `reduce_precision`
-- **Optimization-V**: Refer to git branch `main`
-
-All of our benchmarking, profiling, hotspot analysis and roofline analysis was performed on a separate branch:
-- **Benchmarks**: Refer to git branch `benchmarking`
-
 ## Project Dependencies:
 In terms of external dependencies, we require the presence of the following libraries and tools at minimum to be able to build and run the code:
 - GCC 11
@@ -70,41 +58,3 @@ The test profile guided optimization, first ensure that you are on the branch `p
 
 ## All code in single file:
 To test how the default build target performs when all code is present in a single file instead of being split over several files, you need to be in the branch `pgo` or `onefile`. Then you just need to run `make onefile`. This creates the `polyvol` executable which can then be used as described previously. 
-
-## Benchmarking: 
-To recreate our benchmarks or perform roofline analysis head over to the `benchmarking` branch: 
-```
-git checkout benchmarking
-
-``` 
-To pull executables from a different branch run:
-```
-bash branches_make_polyvol.sh branch_name
-
-``` 
-To run the performance analysis on multiple branches and tests with Linux perf, modify `get_branch_performance_FLOPc_polytopes.py` to the desired branches and test cases and then run: 
-```
-python get_branch_performance_FLOPc_polytopes.py
-
-``` 
-Upon execution, the script disables the turbo-boost with `turbo-boost.sh` and measures cycles, runtime and flop counts with Linux perf. The outputs are saves under `results/`  
-The performance can be plotted with
-```
-python plot_branch_performance.py
-
-``` 
-The speedup can be plotted with
-```
-python plot_speedup.py
-
-``` 
-To run the intel advisor to create data for the roofline plots, run
-```
-bash run_advisor_analysis.sh
-
-``` 
-The outputs are saved under `advisor_output` and can be plotted using
-```
-python plot_roofline.py --project advisor_output/project_name --name out_file_name
-
-``` 
